@@ -145,5 +145,5 @@ deploy-pru1: $(TARGET_PRU1)
 	@echo 'Installing PRU1 firmware to /lib/firmware'
 	@cp -v $(TARGET_PRU1) $(PREFIX)/lib/firmware/beaglelogic-pru1-logic
 	@echo 'Symlinking beaglelogic-pru1-logic to beaglelogic-pru1-fw'
-	@ln -sfv $(PREFIX)/lib/firmware/beaglelogic-pru1-logic $(PREFIX)/lib/firmware/beaglelogic-pru1-fw
+	@ln -sfv beaglelogic-pru1-logic $(PREFIX)/lib/firmware/beaglelogic-pru1-fw
 	@echo ''
