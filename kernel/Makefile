@@ -6,10 +6,6 @@ ifeq ($(LINUX_DIR),)
 	LINUX_DIR := /lib/modules/$(KERNEL_VERSION)/build
 endif
 
-ifeq ($(BIN_DIR),)
-	BIN_DIR := /bin
-endif
-
 beagle-logic-y := beaglelogic.o
 
 obj-m := beagle-logic.o
@@ -23,4 +19,7 @@ clean:
 overlay: beaglelogic-00A0.dtbo
 
 beaglelogic-00A0.dtbo: beaglelogic-00A0.dts
-	$(BIN_DIR)/dtc -O dtb -o beaglelogic-00A0.dtbo -b 0 -@ beaglelogic-00A0.dts
+	dtc -O dtb -o beaglelogic-00A0.dtbo -b 0 -@ beaglelogic-00A0.dts
+
+deploy_overlay:
+	cp -v beaglelogic-00A0.dtbo $(PREFIX)/lib/firmware
